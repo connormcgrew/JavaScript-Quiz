@@ -97,3 +97,33 @@ var questions = [
         correct: "B"
     }
 ];
+
+var lastQuestion = questions.length - 1;
+var runningQuestion = 0;
+var count = 0;
+var questionTime = 10; // 10s
+
+function renderQuestion(){
+    var q = questions[runningQuestion];
+    question.innerHTML = "<p>"+ q.question +"</p>";
+    answerA.innerHTML = q.answerA;
+    answerB.innerHTML = q.answerB;
+    answerC.innerHTML = q.answerC;
+    answerD.innerHTML = q.answerD;
+}
+
+function Submit(e) {
+    if (e) {
+        console.log(e.target); 
+        console.log(e.target.id); 
+    }
+    if (e.target.id == questions[currentQuestion].correct) {
+        console.log("correct answer");
+        score++;
+        console.log(score); 
+    } else {
+        console.log("wrong answer");
+        timerCount = timerCount - wrongTime; 
+        timerCheck()
+    }
+}
