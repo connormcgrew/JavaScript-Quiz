@@ -126,4 +126,38 @@ function Submit(e) {
         timerCount = timerCount - wrongTime; 
         timerCheck()
     }
+    if (questions[currentQuestion].question == "End of Quiz!") { 
+        GameOver()
+    } else {
+        currentQuestion++;
+        renderQuestion()
+    }
+};
+
+
+function timerCheck() {
+    if (timerCount <= 0) {
+        clearInterval(timer);
+        GameOver();
+    }
 }
+
+function Timer() {
+    timer = setInterval(function () {
+    timerCount--;
+    timerElement.textContent = timerCount;
+    if (timerCount === 0) {
+        clearInterval(timer);
+        GameOver();
+    }
+}, 1000);
+};
+
+function GameOver() {
+    var Initials = prompt("Enter your initials");
+    var highscore = {Initials: Initials, score: score,};
+localStorage.setItem("highscore", JSON.stringify(highscore));
+renderHighscoreList();
+}
+
+
