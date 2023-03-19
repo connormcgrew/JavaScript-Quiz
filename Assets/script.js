@@ -8,6 +8,7 @@ var userselection = document.querySelector('#userselection');
 var score = document.querySelector('#score');
 var timer = document.querySelector('#timer');
 var incorrect = 5;
+var currentQuestion = 0;
 
 
 start.addEventListener('click', startQuiz);
@@ -113,16 +114,30 @@ function startQuiz() {
     setInterval(updateTimer, 1000);
 }
 
-
-
-function renderQuestion(){
-    var q = questions[runningQuestion];
+function displayQuestion() {
+    var q = questions[currentQuestion];
     question.innerHTML = "<p>"+ q.question +"</p>";
     answerA.innerHTML = q.answerA;
     answerB.innerHTML = q.answerB;
     answerC.innerHTML = q.answerC;
     answerD.innerHTML = q.answerD;
-}
+  }
+
+  function checkAnswer(e) {
+    var selectedOption = e.target.id;
+    var correctOption = questions[currentQuestion].correct;
+    if (selectedOption === correctOption) {
+      score++;
+    } else {
+      incorrect--;
+    }
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      displayQuestion();
+    } else {
+      endQuiz();
+    }
+  }
 
 function Submit(e) {
     if (e) {
@@ -142,7 +157,7 @@ function Submit(e) {
         GameOver()
     } else {
         currentQuestion++;
-        renderQuestion()
+        displayQuestion()
     }
 };
 
