@@ -105,14 +105,17 @@ var count = 0;
 var questionTime = 10; // 10s
 
 function startQuiz() {
-
     document.querySelector('.content').style.display = 'none';
     document.querySelector('.quiz').style.display = 'block';
     score.innerText = 0;
     timer.innerText = 60;
     displayQuestion(0);
     setInterval(updateTimer, 1000);
-}
+    userselection.forEach((button) => {
+      button.addEventListener('click', checkAnswer);
+    });
+    start.removeEventListener('click', startQuiz);
+  }
 
 function displayQuestion() {
     var q = questions[currentQuestion];
@@ -138,6 +141,26 @@ function displayQuestion() {
       endQuiz();
     }
   }
+
+  function endQuiz() {
+    clearInterval(timer);
+    question.innerHTML = "<p>End of Quiz!</p>";
+    answerA.innerHTML = "";
+    answerB.innerHTML = "";
+    answerC.innerHTML = "";
+    answerD.innerHTML = "";
+    userselection.forEach((button) => {
+      button.removeEventListener('click', checkAnswer);
+    });
+    start.addEventListener('click', startQuiz);
+    start.innerText = "Restart Quiz";
+    score.innerText = "Final Score: " + score + " out of " + questions.length;
+    timer.innerText = "";
+    currentQuestion = 0;
+    score = 0;
+    incorrect = 5;
+  }
+
 
 function Submit(e) {
     if (e) {
@@ -208,6 +231,7 @@ function WellDone() {
        timerElement.textContent = "0";
     }
     }
+
 
 
 
