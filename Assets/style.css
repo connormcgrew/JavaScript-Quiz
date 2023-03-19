@@ -1,0 +1,123 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+/* Jumbotron Styles */
+.jumbotron {
+    background-color: #F9F9F9;
+    padding: 20px;
+    border: 1px solid #DDDDDD;
+    margin-bottom: 20px;
+}
+
+.jumbotron h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.jumbotron span {
+    font-weight: normal;
+}
+
+/* Content Styles */
+.content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content p {
+    margin-bottom: 20px;
+}
+
+/* Quiz Styles */
+.quiz {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.quiz p {
+    margin-bottom: 20px;
+}
+
+.quiz button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Leaderboard Styles */
+.leaderboard {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.leaderboard h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.scores {
+    display: inline-block;
+    text-align: left;
+}
+
+.scores p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.leaderboard button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#goBack {
+    margin-right: 10px;
+}

@@ -103,6 +103,18 @@ var runningQuestion = 0;
 var count = 0;
 var questionTime = 10; // 10s
 
+function startQuiz() {
+
+    document.querySelector('.content').style.display = 'none';
+    document.querySelector('.quiz').style.display = 'block';
+    score.innerText = 0;
+    timer.innerText = 60;
+    displayQuestion(0);
+    setInterval(updateTimer, 1000);
+}
+
+
+
 function renderQuestion(){
     var q = questions[runningQuestion];
     question.innerHTML = "<p>"+ q.question +"</p>";
@@ -159,5 +171,31 @@ function GameOver() {
 localStorage.setItem("highscore", JSON.stringify(highscore));
 renderHighscoreList();
 }
+
+function renderHighScoreList() { 
+    var highScoreList = JSON.parse(localStorage.getItem("highScore")); 
+    if (highScoreList) { 
+        var ul = document.getElementById("list");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(highScoreList.score + " -- " + highScoreList.Initials));
+        ul.appendChild(li);
+        WellDone();
+    }
+};
+
+function WellDone() {
+    var playAgain = confirm("Well Done! You scored " + score + " points. Play again?");
+    if (playAgain) {
+       clearInterval(timer);
+       start();
+    }
+    else {
+       timerElement.textContent = "0";
+    }
+    }
+
+
+
+
 
 
