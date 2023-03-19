@@ -8,7 +8,31 @@
     <title>Code Quiz</title>
 </head>
 <body>
+    <!-- header -->
+    <div class="container">
+        <div class="header">
+            <h1>Code Quiz</h1>
+        </div>
+        <!-- jumbotron -->
+        <div class="jumbotron">
+            <h2>Time: <span id="time">0</span></h2>
+            <h2>Score: <span id="score">0</span></h2>
+        </div>
+        <!-- content -->
+        <div class="content">
+            <h2>Instructions</h2>
+            <p>Answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button id="start">Start Quiz</button>
+        </div>
+        <!-- quiz -->
+        <div class="quiz">
+            <h2>Question</h2>
+            <p id="question"></p>
+            <button id="answer1"></button>
+            <button id="answer2"></button>
+            <button id="answer3"></button>
+            <button id="answer4"></button>
+    </div>
 </body>
 <script src="./Assets/script.js"></script>
 </html>
-
