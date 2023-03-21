@@ -1,123 +1,149 @@
-/* Global Styles */
+.hide {
+    display: none;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    background-color: rgb(98, 104, 104);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: ghostwhite;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Header Styles */
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 36px;
-    margin: 0;
-}
-
-/* Jumbotron Styles */
-.jumbotron {
-    background-color: #F9F9F9;
-    padding: 20px;
-    border: 1px solid #DDDDDD;
-    margin-bottom: 20px;
-}
-
-.jumbotron h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.jumbotron span {
-    font-weight: normal;
-}
-
-/* Content Styles */
-.content {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.content h2 {
-    margin-top: 0;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.content p {
-    margin-bottom: 20px;
-}
-
-/* Quiz Styles */
 .quiz {
+    flex-wrap: wrap;
     text-align: center;
-    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    border-radius: 10px;
+    color: ghostwhite;
+    background-color: rgb(11, 75, 83);
+    margin-bottom: 40px;
+    margin-right: 100px;
+    margin-left: 100px;
+    padding: 10px;
 }
 
-.quiz h2 {
-    margin-top: 0;
-    font-size: 24px;
-    font-weight: bold;
+.begin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.quiz p {
-    margin-bottom: 20px;
+.begin button {
+    background-color: #179e76;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 16px;
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
 }
 
-.quiz button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
+.start:hover {
+    color: rgb(16, 51, 35);
+    transform: scale(1.2);
+    background-color: #16916c;
 }
 
-/* Leaderboard Styles */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    flex-direction: row;
+    background-color: rgb(27, 90, 90);
+    padding: 10px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.userChoice {
+    background-color: #dddfde;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 20px;
+    color: rgb(27, 90, 90);
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.timer {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 36px;
+    text-align: center;
+    padding: 20px;
+}
+
+.score {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 36px;
+    text-align: center;
+    padding: 20px;
+}
+
+.questions {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.questionField {
+    justify-content: center;
+    flex-wrap: wrap;
+    border: slategrey;
+    border-radius: 5px;
+    background-color: rgb(17, 63, 63);
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
 .leaderboard {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.leaderboard h2 {
-    margin-top: 0;
     font-size: 24px;
-    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    background-color: rgb(27, 90, 90);
+    margin-right: 100px;
+    margin-left: 100px;
 }
 
-.scores {
-    display: inline-block;
-    text-align: left;
+.leaderboard li {
+    list-style-type: none;
 }
 
-.scores p {
-    margin: 0;
-    font-size: 18px;
+.submit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
 }
 
-.leaderboard button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.submit button {
+    background-color: #2a2c2b;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font: "sans-serif";
 }
 
-#goBack {
-    margin-right: 10px;
+#submit:hover {
+    color: rgb(236, 236, 236);
+    transform: scale(1.2);
+    background-color: #585858;
+    font-size: 120%;
 }
+
+.leaderboard li {
+    list-style-type: none;
+}
+
