@@ -97,14 +97,14 @@ start.addEventListener('click', function() {
     document.querySelector('.content').classList.add('hidden');
     var quiz = document.querySelector('#quiz');
     quiz.classList.remove('hidden');
-    startQuiz(); // Modified this line
+    startQuiz();
 });
 
 function startQuiz() {
     start.style.display = 'none';
     displayQuestion();
     Timer();
-    incorrectAnswerSubmitted = false; // add this line
+    incorrectAnswerSubmitted = false;
 }
 
 function Timer() {
@@ -144,7 +144,7 @@ function Submit(e) {
     currentQuestion++;
     if (currentQuestion < questions.length) {
         displayQuestion();
-        incorrectAnswerSubmitted = false; // reset the flag for the next question
+        incorrectAnswerSubmitted = false;
     } else {
         endQuiz();
     }
