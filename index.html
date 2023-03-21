@@ -14,38 +14,42 @@
             <h1>Code Quiz</h1>
         </div>
     </div>
-        <!-- jumbotron -->
-        <div class="jumbotron">
-            <h2>Time: <span id="time">0</span></h2>
-            <h2>Score: <span id="score">0</span></h2>
+    <!-- jumbotron -->
+    <div class="jumbotron">
+        <h2>Time: <span id="timer">0</span></h2>
+        <h2>Score: <span id="score">0</span></h2>
+    </div>
+    <!-- content -->
+    <div class="content">
+        <h2>Instructions</h2>
+        <p>Answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button id="start">Start Quiz</button>
+    </div>
+    <!-- quiz -->
+    <div class="quiz hidden" id="quiz">
+        <h2>Question</h2>
+        <p id="question"></p>
+        <button id="answer1" class="answer"></button>
+        <button id="answer2" class="answer"></button>
+        <button id="answer3" class="answer"></button>
+        <button id="answer4" class="answer"></button>
+    </div>
+    <!-- leaderboard -->
+    <div class="leaderboard hidden">
+        <h2>Leaderboard</h2>
+        <div class="scores">
+            <p id="score1"></p>
+            <p id="score2"></p>
+            <p id="score3"></p>
+            <p id="score4"></p>
+            <p id="score5"></p>
         </div>
-        <!-- content -->
-        <div class="content">
-            <h2>Instructions</h2>
-            <p>Answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button id="start">Start Quiz</button>
-        </div>
-        <!-- quiz -->
-        <div class="quiz">
-            <h2>Question</h2>
-            <p id="question"></p>
-            <button id="answerA">A</button>
-            <button id="answerB">B</button>
-            <button id="answerC">C</button>
-            <button id="answerD">D</button>
-        </div>
-        <!-- leaderboard -->
-        <div class="leaderboard">
-            <h2>Leaderboard</h2>
-            <div class="scores">
-                <p id="score1"></p>
-                <p id="score2"></p>
-                <p id="score3"></p>
-                <p id="score4"></p>
-                <p id="score5"></p>
-            </div>
-            <button id="goBack">Go Back</button>
-            <button id="clear">Clear Scores</button>
+        <button id="goBack">Go Back</button>
+        <button id="clear">Clear Scores</button>
+    </div>
+    <script src="./Assets/script.js"></script>
 </body>
-<script src="./Assets/script.js"></script>
 </html>
+
+
+

@@ -1,21 +1,16 @@
 var start = document.querySelector('#start');
 var question = document.querySelector('#question');
-var answerA = document.querySelector('#answerA');
-var answerB = document.querySelector('#answerB');
-var answerC = document.querySelector('#answerC');
-var answerD = document.querySelector('#answerD');
-var userselection = document.querySelector('#userselection');
+var answer1 = document.querySelector('#answer1');
+var answer2 = document.querySelector('#answer2');
+var answer3 = document.querySelector('#answer3');
+var answer4 = document.querySelector('#answer4');
 var score = document.querySelector('#score');
-var timer = document.querySelector('#timer');
-var incorrect = 5;
+var timerElement = document.querySelector('#timer');
+var incorrect = 10;
 var currentQuestion = 0;
-
-
-start.addEventListener('click', startQuiz);
-for (var i = 0; i < userselection.length; i++) {
-    userselection[i].addEventListener('click', checkAnswer);
-}  
-
+var timerCount = 60;
+var countdown;
+var incorrectAnswerSubmitted = false;
 var questions = [   
     { 
         question: "Inside which HTML element do we put the JavaScript?",
@@ -98,116 +93,90 @@ var questions = [
         correct: "B"
     }
 ];
-
-var lastQuestion = questions.length - 1;
-var runningQuestion = 0;
-var count = 0;
-var questionTime = 10; // 10s
+start.addEventListener('click', function() {
+    document.querySelector('.content').classList.add('hidden');
+    var quiz = document.querySelector('#quiz');
+    quiz.classList.remove('hidden');
+    startQuiz(); // Modified this line
+});
 
 function startQuiz() {
-    document.querySelector('.content').style.display = 'none';
-    document.querySelector('.quiz').style.display = 'block';
-    score.innerText = 0;
-    timer.innerText = 60;
-    displayQuestion(0);
-    setInterval(updateTimer, 1000);
-    userselection.forEach((button) => {
-      button.addEventListener('click', checkAnswer);
-    });
-    start.removeEventListener('click', startQuiz);
-  }
-
-function displayQuestion() {
-    var q = questions[currentQuestion];
-    question.innerHTML = "<p>"+ q.question +"</p>";
-    answerA.innerHTML = q.answerA;
-    answerB.innerHTML = q.answerB;
-    answerC.innerHTML = q.answerC;
-    answerD.innerHTML = q.answerD;
-  }
-
-  function checkAnswer(e) {
-    var selectedOption = e.target.id;
-    var correctOption = questions[currentQuestion].correct;
-    if (selectedOption === correctOption) {
-      score++;
-    } else {
-      incorrect--;
-    }
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-      displayQuestion();
-    } else {
-      endQuiz();
-    }
-  }
-
-  function endQuiz() {
-    clearInterval(timer);
-    question.innerHTML = "<p>End of Quiz!</p>";
-    answerA.innerHTML = "";
-    answerB.innerHTML = "";
-    answerC.innerHTML = "";
-    answerD.innerHTML = "";
-    userselection.forEach((button) => {
-      button.removeEventListener('click', checkAnswer);
-    });
-    start.addEventListener('click', startQuiz);
-    start.innerText = "Restart Quiz";
-    score.innerText = "Final Score: " + score + " out of " + questions.length;
-    timer.innerText = "";
-    currentQuestion = 0;
-    score = 0;
-    incorrect = 5;
-  }
-
-
-function Submit(e) {
-    if (e) {
-        console.log(e.target); 
-        console.log(e.target.id); 
-    }
-    if (e.target.id == questions[currentQuestion].correct) {
-        console.log("correct answer");
-        score++;
-        console.log(score); 
-    } else {
-        console.log("wrong answer");
-        timerCount = timerCount - wrongTime; 
-        timerCheck()
-    }
-    if (questions[currentQuestion].question == "End of Quiz!") { 
-        GameOver()
-    } else {
-        currentQuestion++;
-        displayQuestion()
-    }
-};
-
-
-function timerCheck() {
-    if (timerCount <= 0) {
-        clearInterval(timer);
-        GameOver();
-    }
+    start.style.display = 'none';
+    displayQuestion();
+    Timer();
+    incorrectAnswerSubmitted = false; // add this line
 }
 
 function Timer() {
-    timer = setInterval(function () {
-    timerCount--;
-    timerElement.textContent = timerCount;
-    if (timerCount === 0) {
-        clearInterval(timer);
-        GameOver();
+    countdown = setInterval(function() {
+        timerCount--;
+        timerElement.innerHTML = parseInt(timerCount);
+        if (timerCount <= 0) {
+            clearInterval(countdown);
+            endQuiz();
+        }
+    }, 1000);
+}
+
+function displayQuestion() {
+    var currentQuestionData = questions[currentQuestion];
+    question.textContent = currentQuestionData.question;
+    answer1.textContent = currentQuestionData.answerA;
+    answer2.textContent = currentQuestionData.answerB;
+    answer3.textContent = currentQuestionData.answerC;
+    answer4.textContent = currentQuestionData.answerD;
+}
+
+answer1.addEventListener('click', Submit);
+answer2.addEventListener('click', Submit);
+answer3.addEventListener('click', Submit);
+answer4.addEventListener('click', Submit);
+
+function Submit(e) {
+    if (this.id == questions[currentQuestion].correct) {
+        score.innerHTML = parseInt(score.innerHTML) + 1;
+    } else {
+        if (!incorrectAnswerSubmitted) {
+            timerCount -= incorrect;
+            incorrectAnswerSubmitted = true;
+        }
     }
-}, 1000);
-};
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        displayQuestion();
+        incorrectAnswerSubmitted = false; // reset the flag for the next question
+    } else {
+        endQuiz();
+    }
+}
+
+function endQuiz() {
+    clearInterval(countdown);
+    question.style.display = 'none';
+    answer1.style.display = 'none';
+    answer2.style.display = 'none';
+    answer3.style.display = 'none';
+    answer4.style.display = 'none';
+    var leaderboard = document.querySelector('.leaderboard');
+    leaderboard.style.display = 'block';
+}
 
 function GameOver() {
-    var Initials = prompt("Enter your initials");
-    var highscore = {Initials: Initials, score: score,};
-localStorage.setItem("highscore", JSON.stringify(highscore));
-renderHighscoreList();
+    var initials = prompt("Enter your initials");
+    var highScore = {
+        initials: initials,
+        score: score.innerHTML
+    };
+  
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  
+    highScores.push(highScore);
+  
+    highScores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+  
+    localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
 function renderHighScoreList() { 
@@ -230,11 +199,4 @@ function WellDone() {
     else {
        timerElement.textContent = "0";
     }
-    }
-
-
-
-
-
-
-
+}
