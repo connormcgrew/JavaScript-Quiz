@@ -1,9 +1,13 @@
+:root {
+    --black: #000000;
+}
+
 .hide {
     display: none;
 }
 
 body {
-    background-color: rgb(98, 104, 104);
+    background-color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: ghostwhite;
 }
@@ -59,7 +63,6 @@ body {
 }
 
 .userChoice {
-    background-color: #dddfde;
     border-radius: 8px;
     padding: 12px 28px;
     font-size: 20px;
@@ -76,6 +79,7 @@ body {
     font-size: 36px;
     text-align: center;
     padding: 20px;
+    color: var(--black);
 }
 
 .score {
@@ -84,6 +88,7 @@ body {
     font-size: 36px;
     text-align: center;
     padding: 20px;
+    color: var(--black);
 }
 
 .questions {
@@ -92,9 +97,10 @@ body {
     font-size: 20px;
     text-align: center;
     padding: 20px;
+    color: var(--black);
 }
 
-.questionField {
+.question {
     justify-content: center;
     flex-wrap: wrap;
     border: slategrey;
@@ -105,6 +111,7 @@ body {
     padding: 20px;
     margin-right: 100px;
     margin-left: 100px;
+    color: var(--black);
 }
 
 .leaderboard {
@@ -120,7 +127,9 @@ body {
 
 .leaderboard li {
     list-style-type: none;
+
 }
+
 
 .submit {
     display: flex;
